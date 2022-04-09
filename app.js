@@ -44,7 +44,7 @@ let message = document.getElementById("messageBox")
 
 function cellClicked(click){
     let currentCell = click.target.id
-    console.log("hello world", currentCell)
+    console.log("selected index " , currentCell)
     
     if(click.target.innerText) {
         return
@@ -98,11 +98,14 @@ function winnerValidator() {
             break 
         }
     }
-    console.log(roundWon)
-    if(roundWon  === true) {  //display a message saying the player has won
-        alert("We have a winner")
+     if (roundWon  === true) {  //display a message saying the player has won
+        // alert("We have a winner")
+        console.log("we have a winner " + currentPlayer)
 
-    }
+     } else if(gameBoard.includes("") === false){
+        
+        console.log("We have a draw!")
+    } 
 }
 
 //winnerValidator()
