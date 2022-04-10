@@ -1,14 +1,10 @@
-//to do
-
-// update the board upon selection 
-// call the winnerValidator function : still need to check for draws
-// update the UI based on the results
-
 // first and foremost created my 2 players. player1 which is x, player 2 which is o
+// set the current player to x
 let player1 = "x"
 let player2 ="o"
 let currentPlayer = "x"
 
+// broke down my array into 3 different lines to mimick a tic-tac-toe board
 const gameBoard = [
     '', '', '', //   [0, 1, 2
     '', '', '', //  3, 4, 5
@@ -16,7 +12,7 @@ const gameBoard = [
 ]
 
 
-  // created a variable to store all possible winning formations
+  // created a variable to store all possible winning formations on a tic tac toe board 
 let  winningConditions = [
      // horizontal winning formations
     [0, 1, 2],
@@ -37,9 +33,23 @@ let  winningConditions = [
 let cells = document.getElementsByClassName("cell")
 let board = document.getElementById("board")
 let inputField = document.getElementById("input")
-let player = document.getElementById("playerName")
 let refreshButton = document.getElementById("refresh")
 let message = document.getElementById("messageBox")
+let playerX = document.getElementById("player1")
+let playerO = document.getElementById("player2")
+let playersButton = document.getElementById("playerNameInput")
+let player1Name = document.getElementById("playerName")
+let player2Name = document.getElementById("playerName2")
+
+function playerEntry (){
+    playersButton.addEventListener("click", function(){
+        playerX.innerText = player1Name.value + " is X"
+    })
+    playersButton.addEventListener("click", function(){
+        playerO.innerText = player2Name.value + " is O"
+    })
+}
+playerEntry()
 
 
 function cellClicked(click){
@@ -62,7 +72,7 @@ function cellClicked(click){
     console.log(gameBoard)
 }
 
-// only let a click be possible on the cell if it is null 
+
 function cellClicker() {
     for(var i = 0; i < cells.length; i++) {
         cells[i].addEventListener("click", cellClicked)
@@ -75,40 +85,40 @@ cellClicker()
 
 function winnerValidator() {
     // assign roundWon variable to = false
-    let roundWon = false;
+    let roundWon = false
     // loop through each index in winning conditions starting from 0, as long as it is less than or equal to 7
     for (let i = 0; i <= 7; i++) {
         // assigns winningConditions current index to a winCondition constant
-        const winCondition = winningConditions[i]; // [0, 4, 8]
-        let firstChoiceIndex = winCondition[0] // 0
-        let secondChoiceIndex = winCondition[1] // 4
-        let thirdChoiceIndex = winCondition[2] // 8
+        const winCondition = winningConditions[i] 
+        let firstChoiceIndex = winCondition[0] 
+        let secondChoiceIndex = winCondition[1] 
+        let thirdChoiceIndex = winCondition[2] 
+        //assigned the index of our game board a number that is the index of an array in winning conditions 
+        let a = gameBoard[firstChoiceIndex]
+        let b = gameBoard[secondChoiceIndex] 
+        let c = gameBoard[thirdChoiceIndex]
 
-        let a = gameBoard[firstChoiceIndex]; // ''
-        let b = gameBoard[secondChoiceIndex]; // o
-        let c = gameBoard[thirdChoiceIndex]; // x
-
-        
+        // if a, b, c, are empty continue
          if (a === '' || b === '' || c === '') {
             continue;
         }
+
         if (a === b && b === c) {
             roundWon = true;
             console.log(winCondition)
             break 
         }
     }
-     if (roundWon  === true) {  //display a message saying the player has won
-        // alert("We have a winner")
-        console.log("we have a winner " + currentPlayer)
-
+    // display winner message, else  if display the draw message
+     if (roundWon  === true) {  
+         document.getElementById("winnerMessage").innerText = currentPlayer + " is the winner!"
+    
      } else if(gameBoard.includes("") === false){
-        
+        document.getElementById("winnerMessage").innerText = "The match has resulted in a draw!"
         console.log("We have a draw!")
     } 
 }
 
-//winnerValidator()
 
 
 
@@ -120,37 +130,6 @@ function winnerValidator() {
 
 
 
-// this function will be our entry function to enter player names and display them
-// function playerNames(){
-//     let player1 = document.getElementById("Player1").value
-//     let player2 = document.getElementById("Player2").value
-
-//     if (player1 === " " || player2 === " ") {
-//         alert("waiting on a player")
-//         return
-//     }
-//     document.getElementById("player1").innerText = player1 + "will be 'x' and "
-//     document.getElementById("player2").innerText = player2 + "will be 'o'"
-//     document.getElementById("firstMark").innerText = playerX + "you are first!"
-    
-//     enableClick()
-// }
-
-
-
-
-
-
-
-// built a function to determine who's turn it is, using math.random method
-// function playerUp () {
-//     let randomNum = Math.round(Math.random())
-//     console.log(randomNum) 
-//     console.log("hello")
-// }
-
-// //called our functiom
-// playerUp ()
 
 
 
@@ -161,33 +140,5 @@ function winnerValidator() {
 
 
 
-
-// board.forEach
-
-
-
-
-
-
-
-
-
-
-// function currentCellPlayed() {
-//     let gameOver = false;
-
-
-// }
-// function nextPlayerUp() {
-
-
-
-
-
-
-
-
-// document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
-// document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
 
 

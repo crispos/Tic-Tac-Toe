@@ -81,3 +81,30 @@ body {
     font-family: Impact;
     
 }
+
+#winnerMessage{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: rgba(31, 31, 165, 0.846);
+    border-top: 5rem;
+}
+
+
+#instructions{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    display: flex;
+    color: crimson;
+    justify-content: center;
+    font-family: 'Lucida Sans',
+    'Lucida Sans Regular',
+    'Lucida Grande',
+    'Lucida Sans Unicode',
+    Geneva,
+    Verdana,
+    sans-serif;
+}

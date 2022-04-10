@@ -9,6 +9,11 @@
   </head>
   <body>
     <div id="messageBox">Tic-Tac-Toe</div>
+    <h1 class="gameResult" id="winnerMessage">Tic-Tac-Toe Royale</h1>
+    <div id="playerNames">
+      <div id="player1"></div>
+      <div id="player2"></div>
+    </div>
     <div id="container">
       <div class="board" id="board">
         <!-- my cell divs needed a class for css manipulation and an id for js manipulation -->
@@ -24,9 +29,14 @@
       </div>
     </div>
     <div id="inputs">
-      <input id="input" type="text" placeholder="enter name" />
-      <input id="playerName" type="text" placeholder= "player 2 name"/>
+      <input id="playerName" type="text" placeholder= "player 1 name"/>
+      <input id="playerName2" type="text" placeholder= "player 2 name"/>
+      <button id="playerNameInput">Display player name here</button> 
+
       <button class="newGame" type="button" id="refresh">New Game</button>
+    </div>
+    <div id="instructions">
+      <p>Insert two player names and then click display player names here</p>
     </div>
   </body>
 
